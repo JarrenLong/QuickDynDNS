@@ -14,7 +14,12 @@ if(is_admin()) {
 			$admin_hostname = 'Unknown';
 		
 		$num_users = 0;
-		$total_requests = 0;
+		$total_requests = get_request_stats_table();
+		
+		$req_install = get_request_stats_table('install');
+		$req_scode = get_request_stats_table('shortcode');
+		$req_widget = get_request_stats_table('widget');
+		$req_svc = get_request_stats_table('service');
 		
 		// display information
 		echo '<div style="display:table; width: 100%;">';
@@ -35,19 +40,19 @@ if(is_admin()) {
 				</thead>
 				<tr>
 					<td>Install</td>
-					<td>0</td>
+					<td>' . $req_install . '</td>
 				</tr>
 				<tr>
 					<td>Shortcode</td>
-					<td>0</td>
+					<td>' . $req_scode . '</td>
 				</tr>
 				<tr>
 					<td>Widget</td>
-					<td>0</td>
+					<td>' . $req_widget . '</td>
 				</tr>
 				<tr>
 					<td>Service</td>
-					<td>0</td>
+					<td>' . $req_svc . '</td>
 				</tr>
 			</table>
 			<hr>

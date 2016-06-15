@@ -55,22 +55,6 @@ function qddns_update_db_check() {
 }
 add_action( 'plugins_loaded', 'qddns_update_db_check' );
 
-function qddns_insert_data($uid, $ip, $src = '') {
-	global $wpdb;
-	
-	$table_name = $wpdb->prefix . 'qddns';
-	
-	$wpdb->insert( 
-		$table_name, 
-		array( 
-			'user_id' => $uid,
-			'time' => current_time( 'mysql' ), 
-			'ip_address' => $ip,
-			'source' => $src
-		) 
-	);
-}
-
 function qddns_install_data() {
 	get_client_ip('install');
 }
