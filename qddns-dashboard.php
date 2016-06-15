@@ -13,7 +13,7 @@ if(is_admin()) {
 		if( !$admin_hostname || $admin_hostname == $admin_ip_address )
 			$admin_hostname = 'Unknown';
 		
-		$num_users = 0;
+		$num_users = get_num_valid_users();
 		$total_requests = get_request_stats_table();
 		
 		$req_install = get_request_stats_table('install');

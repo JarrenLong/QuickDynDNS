@@ -34,6 +34,16 @@ function get_client_ip($src) {
 	return $ip;
 }
 
+function get_num_valid_users() {
+	global $wpdb;
+	
+	$sql = "SELECT DISTINCT user_id FROM " . $wpdb->prefix . 'qddns';
+	
+	$res = $wpdb->get_results( $sql );
+
+	return count($res);
+}
+
 function get_request_stats_table($src = '') {
 	global $wpdb;
 	
