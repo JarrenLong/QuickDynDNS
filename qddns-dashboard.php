@@ -3,19 +3,10 @@
 if(is_admin()) {
 	/* Dashboard widget */
 	function qddns_dashboard_widget_function() {
-		// admin ip address
-		$admin_ip_address = $_SERVER['REMOTE_ADDR'];
-		if( !$admin_ip_address )
-			$admin_ip_address = 'unknown';
-		
-		// admin hostname
-		$admin_hostname = @gethostbyaddr( $admin_ip_address );
-		if( !$admin_hostname || $admin_hostname == $admin_ip_address )
-			$admin_hostname = 'Unknown';
-		
+		$ip = get_client_ip('', false);
+		$host = ip_address_to_hostname( $ip );
 		$num_users = get_num_valid_users();
 		$total_requests = get_request_stats_table();
-		
 		$req_install = get_request_stats_table('install');
 		$req_scode = get_request_stats_table('shortcode');
 		$req_widget = get_request_stats_table('widget');
@@ -23,9 +14,10 @@ if(is_admin()) {
 		
 		// display information
 		echo '<div style="display:table; width: 100%;">';
-		echo '<div style="display:table-cell;"><big><strong>Your IP is ' . $admin_ip_address . '</strong></big></div>';
-		if($admin_hostname != 'unknown')
-			echo '<div style="display:table-cell; text-align: right;"><small>(' . __('hostname', 'qddns-address') . ' : ' . $admin_hostname . ')</small></div>';
+		echo '<div style="display:table-cell;"><big><strong>Your IP is ' . $ip . '</strong></big></div>';
+		if($host != 'unknown')
+			echo '<div style="display:table-cell; text-align: right;"><small>(' . __('hostname', 'qddns-address') . ' : ' . $host . ')</small></div>';
+		echo '<div style="display:table-row;"><a href="admin.php?page=qddns">View Quick DynDNS Settings</a></div>';
 		echo "</div>\n\n";
 		echo '
 		<div class="box-ip">
@@ -56,7 +48,7 @@ if(is_admin()) {
 				</tr>
 			</table>
 			<hr>
-			Like this plugin? <a href="http://jlong.co/donate">Make a donation</a> to support further development!
+			Like this plugin? <a href="http://jlong.co/donate">Donate</a> to support development!
 		</div>';
 	}
 

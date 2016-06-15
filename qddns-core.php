@@ -14,7 +14,7 @@ function qddns_insert_data($uid, $ip, $src = '') {
 	);
 }
 
-function get_client_ip($src) {
+function get_client_ip($src, $log = true) {
 	if ( !empty( $_SERVER['HTTP_CLIENT_IP'] ) )
 		$ip = $_SERVER['HTTP_CLIENT_IP'];
 	elseif ( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) )
@@ -25,11 +25,21 @@ function get_client_ip($src) {
 	$ip = apply_filters( 'wpb_get_ip', $ip );
 	
 	// Save IP to database table
-	$uid = get_current_user_id();
-	if( $uid > 0 )
-		qddns_insert_data( $uid, $ip, $src );
+	if( $log ) {
+		$uid = get_current_user_id();
+		if( $uid > 0 )
+			qddns_insert_data( $uid, $ip, $src );
+	}
 	
 	return $ip;
+}
+
+function ip_address_to_hostname($ip) {
+	$host = @gethostbyaddr( $ip );
+	if( !$host || $host == $ip )
+		$host = 'Unknown';
+	
+	return host;
 }
 
 function get_num_valid_users() {
