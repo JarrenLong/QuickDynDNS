@@ -3,10 +3,8 @@
 function qddns_insert_data($uid, $ip, $src = '') {
 	global $wpdb;
 	
-	$table_name = $wpdb->prefix . 'qddns';
-	
 	$wpdb->insert( 
-		$table_name, 
+		$wpdb->prefix . 'qddns', 
 		array( 
 			'user_id' => $uid,
 			'time' => current_time( 'mysql' ), 
@@ -37,11 +35,7 @@ function get_client_ip($src) {
 function get_num_valid_users() {
 	global $wpdb;
 	
-	$sql = "SELECT DISTINCT user_id FROM " . $wpdb->prefix . 'qddns';
-	
-	$res = $wpdb->get_results( $sql );
-
-	return count($res);
+	return count( $wpdb->get_results( "SELECT DISTINCT user_id FROM " . $wpdb->prefix . 'qddns' ) );
 }
 
 function get_request_stats_table($src = '') {
@@ -52,14 +46,6 @@ function get_request_stats_table($src = '') {
 	if( !empty($src))
 		$sql .= " WHERE source = '" . $src . "'";
 	
-	$res = $wpdb->get_results( $sql );
-
-	return count($res);
-	/*
-	foreach ( $res as $r ) 
-	{
-		echo $r->post_title;
-	}
-	*/
+	return count( $wpdb->get_results( $sql ) );
 }
 ?>

@@ -56,7 +56,7 @@ if(is_admin()) {
 				</tr>
 			</table>
 			<hr>
-			Like this plugin? <a href="http://jlong.co/donate">Make a donation</a> to keep it going!
+			Like this plugin? <a href="http://jlong.co/donate">Make a donation</a> to support further development!
 		</div>';
 	}
 
