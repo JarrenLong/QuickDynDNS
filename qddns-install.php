@@ -59,5 +59,3 @@ function qddns_install_data() {
 	get_client_ip('install');
 }
 register_activation_hook( __FILE__, 'qddns_install_data' );
-
-?>

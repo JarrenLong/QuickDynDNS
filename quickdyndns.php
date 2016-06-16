@@ -31,6 +31,7 @@ $qddns_db_version = '1.0.22';
 /* Plugin CSS */
 wp_enqueue_style('custom-style', plugins_url( 'css/style-qddns.css', __FILE__ ), array(), 'all');
 
+include('qddns-rewrite.php');
 include('qddns-core.php');
 include('qddns-install.php');
 include('qddns-settings.php');
@@ -39,5 +40,3 @@ include('qddns-contactlink.php');
 include('qddns-shortcode.php');
 include('qddns-widget.php');
 include('qddns-userprofile.php');
-
-?>

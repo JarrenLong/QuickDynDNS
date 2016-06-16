@@ -58,5 +58,3 @@ if(is_admin()) {
 
 	add_action('wp_dashboard_setup', 'qddns_add_dashboard_widgets' );
 }
-
-?>

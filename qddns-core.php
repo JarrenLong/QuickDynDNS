@@ -58,4 +58,3 @@ function get_request_stats_table($src = '') {
 	
 	return count( $wpdb->get_results( $sql ) );
 }
-?>

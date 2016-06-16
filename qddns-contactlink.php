@@ -11,5 +11,3 @@ if(is_admin()) {
 	$plugin = plugin_basename( __FILE__ ); 
 	add_filter("plugin_action_links_$plugin", 'user_ip_contact_link' );
 }
-
-?>

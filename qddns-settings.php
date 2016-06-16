@@ -25,5 +25,3 @@ function qddns_plugin_settings() {
 }
 
 add_action('admin_menu', 'qddns_plugin_settings');
-
-?>
