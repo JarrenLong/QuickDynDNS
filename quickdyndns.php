@@ -2,7 +2,7 @@
 /*
  * Plugin name: Quick DynDNS
  * Plugin URI: http://jlong.co
- * Description: A simple plugin to show client IP address information anywhere on your site, and provide Dynamic DNS services.
+ * Description: Quick DynDNS provides free and premium Dynamic DNS services for your members, allowing them to know their current IP address wherever they are.
  * Version: 1.0.30
  * Author: Jarren Long
  * Author URI: http://jlong.co
