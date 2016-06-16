@@ -1,7 +1,17 @@
 <?php
+	
+$auth = '';
+$fmt = $wp->query_vars["qddns"];
+$raw = split( "-", $fmt );
+
+if( count( $raw ) > 1) {
+	$fmt = $raw[0];
+	$auth = $raw[1];
+} else {
+	$auth = $raw[0];
+}
 
 if( current_user_has_auth() ) {
-	$fmt = 'xml';
 	$cur_ip = get_client_ip( 'service' );
 	
 	if( $fmt == 'json' ) {
@@ -10,7 +20,8 @@ if( current_user_has_auth() ) {
 		
 		wp_send_json( array(
 			'QDDNS' => array(
-				'IP' => $cur_ip
+				'IP' => $cur_ip,
+				'AuthToken' => $auth
 			)
 		) );
 	} else if( $fmt == 'xml') {
@@ -20,11 +31,12 @@ if( current_user_has_auth() ) {
 		print '<?xml version="1.0"?>
 <QDDNS xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<IP>' . $cur_ip . '</IP>
+	<AuthToken>' . $auth . '</AuthToken>
 </QDDNS>';
 	} else {
 		// Send response as Text
 		header('Content-Type: text/plain;charset=utf-8');
-		
+
 		print $cur_ip;
 	}
 } else {
