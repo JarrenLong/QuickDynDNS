@@ -4,7 +4,7 @@ function qddns_insert_data($uid, $ip, $src = '') {
 	global $wpdb;
 	
 	$wpdb->insert( 
-		$wpdb->prefix . 'qddns', 
+		$wpdb->prefix . 'qddns_iplog', 
 		array( 
 			'user_id' => $uid,
 			'time' => current_time( 'mysql' ), 
@@ -51,7 +51,7 @@ function get_num_valid_users() {
 function get_request_stats_table($src = '') {
 	global $wpdb;
 	
-	$sql = "SELECT user_id, time, ip_address, source FROM " . $wpdb->prefix . 'qddns';
+	$sql = "SELECT user_id, time, ip_address, source FROM " . $wpdb->prefix . 'qddns_iplog';
 	
 	if( !empty($src))
 		$sql .= " WHERE source = '" . $src . "'";

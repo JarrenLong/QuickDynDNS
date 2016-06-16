@@ -6,7 +6,7 @@ Tags: lookup ip address, ip lookup, ip address, show ip address, dns, dynamic dn
 License: GPLv3
 Requires at least: 3.6
 Tested up to: 4.5.2
-Stable tag: 1.0.26
+Stable tag: 1.0.27
 == Description ==
 #### Shows Your IP address 
 The idea is simple, give it a go, let me know what you think of this plugin. Any suggested updates I'll consider in each build.

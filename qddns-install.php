@@ -6,11 +6,22 @@ function qddns_install() {
 	global $qddns_db_version;
 
 	// Fresh install of the database
-	$table_name = $wpdb->prefix . 'qddns';
+	$db_prefix = $wpdb->prefix . 'qddns_';
+	$table_users = $db_prefix . 'users';
+	$table_iplog = $db_prefix . 'iplog';
 	
 	$charset_collate = $wpdb->get_charset_collate();
 
-	$sql = "CREATE TABLE $table_name (
+	// Create the QDDNS user table
+	$sql = "CREATE TABLE $table_users (
+		id mediumint(9) NOT NULL AUTO_INCREMENT,
+		user_id bigint(20),
+		service_token text,
+		max_service_requests mediumint(8),
+		UNIQUE KEY id (id)
+	) $charset_collate;
+	
+	CREATE TABLE $table_iplog (
 		id mediumint(9) NOT NULL AUTO_INCREMENT,
 		user_id bigint(20),
 		time datetime DEFAULT '0000-00-00 00:00:00',
@@ -27,9 +38,16 @@ function qddns_install() {
 	// Check for a newer version and upgrade the database if necessary
 	$installed_ver = get_option( "qddns_db_version" );
 	if ( $installed_ver != $qddns_db_version ) {
-		$table_name = $wpdb->prefix . 'qddns';
-
-		$sql = "CREATE TABLE $table_name (
+		// Create the QDDNS user table
+		$sql = "CREATE TABLE $table_users (
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			user_id bigint(20),
+			service_token text,
+			max_service_requests mediumint(8),
+			UNIQUE KEY id (id)
+		);
+		
+		CREATE TABLE $table_iplog (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			user_id bigint(20),
 			time datetime DEFAULT '0000-00-00 00:00:00',

@@ -3,7 +3,7 @@
  * Plugin name: Quick DynDNS
  * Plugin URI: http://jlong.co
  * Description: A simple plugin to show client IP address information anywhere on your site, and provide Dynamic DNS services.
- * Version: 1.0.26
+ * Version: 1.0.27
  * Author: Jarren Long
  * Author URI: http://jlong.co
  * License: GPLv3
@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 global $qddns_db_version;
-$qddns_db_version = '1.0.26';
+$qddns_db_version = '1.0.27';
 
 /* Plugin CSS */
 //wp_enqueue_style('custom-style', plugins_url( 'css/style-qddns.css', __FILE__ ), array(), 'all');
