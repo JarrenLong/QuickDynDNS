@@ -1,55 +1,43 @@
 === Quick DynDNS ===
 Contributors: Jarren Long
+Author URI: http://jlong.co
+Plugin URL: http://jlong.co/quickdyndns
 Donate link: http://jlong.co/donate
-Description: A simple plugin to show client IP address information anywhere on your site, and provide Dynamic DNS services.
-Tags: lookup ip address, ip lookup, ip address, show ip address, dns, dynamic dns, ddns
+Description: Quick DynDNS provides free and premium Dynamic DNS services for your members, allowing them to know their current IP address wherever they are.
+Tags: dns, dynamic dns, ddns, lookup ip address, ip lookup, ip address, show ip address
 License: GPLv3
 Requires at least: 3.6
 Tested up to: 4.5.2
 Stable tag: 1.0.30
+
 == Description ==
-#### Shows Your IP address 
-The idea is simple, give it a go, let me know what you think of this plugin. Any suggested updates I'll consider in each build.
+Quick DynDNS (QDDNS) makes it easy to setup your very own Dynamic DNS (DDNS) service, allowing users all of the benefits of knowing their IP address. This can be very handy for users hosting web services at home who do not have the benefit of owning a static IP address.
 
-#### Great for:
-* Your home page
-* Posts
-* Pages
+= Easy Setup =
+Out of the box, Quick DynDNS can be turned on with a mouse click, and can be added anywhere on your website using the [qddns] shortcode or the included widget without a hassle. The Dashboard Widget will give you concise statistics about how QDDNS has been used, and tracks historical usage over time.
 
-#### Dashboard widget:
-* I have also included a link to a wiki page which covers information to do with IP addresses.
+= Configurable =
 
-#### This is a FREE plugin
-This simply shows the IP address of a visitor if they land on a specific page, you simply put your tag where you want your visitor to see there IP address, and that's it!
-This tag works on specific pages or widgets by simply adding in the tag [qddns]. Your IP address also shows on your admin dashboard.
-> #### To show an IP address on any of your pages you could use:
+= Dashboard widget =
+The Dashboard Widget is designed to give you concise statistics about how QDDNS has been used, and tracks historical usage over time.
 
-> What's my IP address: [qddns]
+= Widgets =
+The widget that comes with Quick DynDNS can be placed anywhere on your site that will accept a widget, and shows the exact same information as the [qddns] shortcode. The widget is provided as a convenience; if you want to place the QDDNS information somewhere unusual on your website, the [qddns] shortcode will be easier to use.
+
 == Installation ==
-#### Installation
-* Click on the download button
-* Save to your desktop
-* Upload to your plugins folder via FTP
-* Activate
+= From your WordPress dashboard =
+1. Visit 'Plugins > Add New'
+2. Search for 'Quick DynDNS'
+3. Activate Quick DynDNS from your Plugins page
 
-If you want to install manually, download and unzip the quickdyndns.zip file and upload to the /wp-content/plugins/ directory. Then activate the plugin through the **Plugins** section in WordPress.
+= From WordPress.org =
+1. Download Quick DynDNS
+2. Upload the 'quickdyndns' directory to your '/wp-content/plugins/' directory, using your favorite method (ftp, sftp, scp, etc...)
+3. Activate Quick DynDNS from your Plugins page
 
-Or
-* Install directly from the Wordpress plugin area
-* Activate
-
-You can find, download and install [Show IP address](http://wordpress.org/plugins/quickdyndns/) directly from the **Plugins** section in WordPress.
-
-#### Issues
-Make sure your host is running shell_exec() or you will have dashboard errors. Working on a work around for this.
-
-#### Widgets
-
-This simply shows an IP address on a specific page or widget by simply adding in this tag [qddns].
 
 = Template Tags =
-
-[qddns] use this tag on your pages to show your IP address.
+[qddns] use this tag on your pages to show your client's IP address.
 
 == Screenshots ==
 1. Display short code
@@ -57,18 +45,16 @@ This simply shows an IP address on a specific page or widget by simply adding in
 3. Short code in a widget
 
 == Frequently Asked Questions ==
+Nothing has been asked so far!
 
-#### FAQs
-> Q). Will this work on any WordPress installation?
->
-> A). This depends on your server configeration, and your PHP type. This has been tested with the latest version of PHP and Wordpress.
-
-#### Issues
-> Q). I have errors on my dashboard, it shows shell_exec() has been disabled for security reasons
->
-> A). Make sure your host is running shell_exec() or you will have dashboard errors. I'm working on a work around for this.
+== Issues ==
+Nothing to report!
 
 == Changelog ==
 
-= 1.0 =
+= 1.1.0 =
+Released: July xth, 2016
 * Initial public release
+
+= 1.0.x =
+* Initial implementation, no public releases
