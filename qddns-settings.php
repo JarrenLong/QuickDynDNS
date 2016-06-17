@@ -40,4 +40,4 @@ function qddns_plugin_links($links, $file) {
 	return $links;
 
 }
-add_filter('plugin_row_meta', 'qddns_plugin_links');
+//add_filter('plugin_row_meta', 'qddns_plugin_links');

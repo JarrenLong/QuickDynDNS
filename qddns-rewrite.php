@@ -2,8 +2,8 @@
 
 function qddns_rewrite() {
     add_rewrite_rule( 'qddns-svc.php$', 'index.php?qddns=1', 'top' );
-	//add_rewrite_rule( 'qddns-svc.json$', 'index.php?qddns=1;json=true', 'top' );
-	//add_rewrite_rule( 'qddns-svc.xml$', 'index.php?qddns=1;xml=true', 'top' );
+	add_rewrite_rule( 'qddns-svc.json$', 'index.php?qddns=1;json=true', 'top' );
+	add_rewrite_rule( 'qddns-svc.xml$', 'index.php?qddns=1;xml=true', 'top' );
 }
 add_action( 'init', 'qddns_rewrite' );
 
