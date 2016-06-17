@@ -17,7 +17,7 @@ if(is_admin()) {
 	
 	// TODO: Doesn't work anymore...?
 	function qddns_plugin_row_meta_links($links, $file) {
-		if ( strpos( $file, 'qddns-contactlink.php' ) !== false ) {
+		if ( strpos( $file, __FILE__ ) !== false ) {
 			$new_links = array(
 				'support' => '<a href="http://jlong.co/quickdyndns#support" target="_blank">Support</a>',
 				'donate' => '<a href="http://jlong.co/donate" target="_blank">Donate</a>'
