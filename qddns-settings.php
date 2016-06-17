@@ -25,19 +25,4 @@ function qddns_plugin_settings() {
 }
 add_action('admin_menu', 'qddns_plugin_settings');
 
-function qddns_plugin_links($links, $file) {
-	if ( strpos( $file, 'quickdyndns.php' ) !== false ) {
-		$new_links = array(
-			'donate' => '<a href="http://jlong.co/donate" target="_blank">Donate</a>',
-			'settings' => '<a href="options-general.php?page=qddns">Settings</a>',
-			'faq' => '<a href="http://jlong.co/qddns#faq" target="_blank">FAQ</a>',
-			'support' => '<a href="http://jlong.co/qddns#support" target="_blank">Support</a>'
-		);
-		
-		$links = array_merge( $links, $new_links );
-	}
-	
-	return $links;
-
-}
-//add_filter('plugin_row_meta', 'qddns_plugin_links');
+?>

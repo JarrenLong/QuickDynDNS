@@ -35,3 +35,4 @@ function qddns_save_extra_profile_fields( $user_id ) {
 }
 add_action( 'personal_options_update', 'qddns_save_extra_profile_fields' );
 add_action( 'edit_user_profile_update', 'qddns_save_extra_profile_fields' );
+?>

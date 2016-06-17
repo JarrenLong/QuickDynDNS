@@ -36,3 +36,4 @@ function qddns_rewrite_parse_request( $wp ) {
     return;
 }
 add_action( 'parse_request', 'qddns_rewrite_parse_request' );
+?>

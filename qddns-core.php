@@ -75,3 +75,4 @@ function current_user_has_auth() {
 function create_user_auth_token() {
 	return substr( bin2hex( wp_hash( get_current_user()->user_login . current_time( 'mysql' ) . $wpdb->prefix ) ), 0, 32 );
 }
+?>
