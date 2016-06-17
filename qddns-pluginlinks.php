@@ -1,6 +1,6 @@
 <?php
 
-if(is_admin()) {
+//if(is_admin()) {
 	/* Add links to the plugin page next to the Activate/Deactivate link */
 	function qddns_plugin_action_links( $links ) {
 		$new_links = array(
@@ -17,17 +17,19 @@ if(is_admin()) {
 	
 	// TODO: Doesn't work anymore...?
 	function qddns_plugin_row_meta_links($links, $file) {
-		if ( strpos( $file, __FILE__ ) !== false ) {
-			$new_links = array(
-				'support' => '<a href="http://jlong.co/quickdyndns#support" target="_blank">Support</a>',
-				'donate' => '<a href="http://jlong.co/donate" target="_blank">Donate</a>'
+		$plugin_file = plugin_basename( __FILE__ );
+		
+		if ( $file == $plugin_file ) {
+			return array_merge(
+				$links, array(
+					'support' => '<a href="http://jlong.co/quickdyndns#support" target="_blank">Support</a>',
+					'donate' => '<a href="http://jlong.co/donate" target="_blank">Donate</a>'
+				)
 			);
-			
-			return array_merge( $links, $new_links );
 		}
 		
 		return $links;
 	}
-	//add_filter('plugin_row_meta', 'qddns_plugin_row_meta_links');
-}
+	add_filter('plugin_row_meta', 'qddns_plugin_row_meta_links', 10, 2);
+//}
 ?>
