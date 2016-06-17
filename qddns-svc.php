@@ -1,7 +1,12 @@
 <?php
+
+print var_dump($wp->query_vars);
 	
 $auth = '';
 $fmt = $wp->query_vars["qddns"];
+if ( empty($fmt) ) {
+	$fmt = $wp->query_vars["name"];
+}
 $raw = split( "-", $fmt );
 
 if( count( $raw ) > 1) {
