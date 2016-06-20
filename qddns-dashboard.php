@@ -20,12 +20,10 @@ if(is_admin()) {
 		echo '<div style="display:table-row;"><a href="admin.php?page=qddns">View Quick DynDNS Settings</a></div>';
 		echo "</div>\n\n";
 		echo '
-		<script src="../wp-content/plugins/quickdyndns/css/chartjs/dist/Chart.bundle.js"></script>
 		<div class="box-ip">
 			<hr>
 			This month, ' . $num_users . ' users have made ' . $total_requests . ' IP Lookup requests:
 			<canvas id="qddns-dashboard-canvas"></canvas>
-			<script src="../wp-content/plugins/quickdyndns/js/scripts-qddns.js"></script>
 			<table class="wp-list-table widefat fixed striped posts">
 				<thead>
 				<tr>

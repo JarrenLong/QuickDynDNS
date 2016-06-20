@@ -8,7 +8,7 @@ Tags: dns, dynamic dns, ddns, lookup ip address, ip lookup, ip address, show ip 
 License: GPLv3
 Requires at least: 3.6
 Tested up to: 4.5.2
-Stable tag: 1.0.36
+Stable tag: 1.0.37
 
 == Description ==
 Quick DynDNS (QDDNS) makes it easy to setup your very own Dynamic DNS (DDNS) service, allowing users all of the benefits of knowing their IP address. This can be very handy for users hosting web services at home who do not have the benefit of owning a static IP address.
