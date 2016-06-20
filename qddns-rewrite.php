@@ -14,6 +14,7 @@ function qddns_rewrite_query_vars( $query_vars ) {
 }
 add_filter( 'query_vars', 'qddns_rewrite_query_vars' );
 
+// TODO: This is breaking the whole website!!!
 function qddns_rewrite_parse_request( $wp ) {
 	if ( array_key_exists( 'name', $wp->query_vars ) ) {
 		$k = $wp->query_vars['name'];
@@ -35,5 +36,5 @@ function qddns_rewrite_parse_request( $wp ) {
     }
     return;
 }
-add_action( 'parse_request', 'qddns_rewrite_parse_request' );
+//add_action( 'parse_request', 'qddns_rewrite_parse_request' );
 ?>

@@ -44,8 +44,5 @@ if( current_user_has_auth() ) {
 
 		print $cur_ip;
 	}
-} else {
-	// TODO: Redirect to error page
-	print '401 Not Authorized';
 }
 ?>
