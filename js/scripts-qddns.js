@@ -13,29 +13,53 @@ var color2 = randomColor(0.5);
 var color3 = randomColor(0.5);
 var color4 = randomColor(0.5);
 
+var installs = new Array();
+var shortcodes = new Array();
+var widgets = new Array();
+var services = new Array();
+
+jQuery.each( monthData.requests , function(k, v) {
+	switch(v.source) {
+		case "install":
+			installs.push( moment( v.time, 'YYYY-MM-DD HH:mm:ss' ) );
+			break;
+		case "shortcode":
+			shortcodes.push( moment( v.time, 'YYYY-MM-DD HH:mm:ss' ) );
+			break;
+		case "widget":
+			widgets.push( moment( v.time, 'YYYY-MM-DD HH:mm:ss' ) );
+			break;
+		case "service":
+			services.push( moment( v.time, 'YYYY-MM-DD HH:mm:ss' ) );
+			break;
+		default:
+		break;
+	}
+});
+
 var config = {
 	type: 'line',
 	data: {
 		labels: ["This Month", "Today"],
 		datasets: [{
 			label: "Install",
-			data: [0,1,2,3,4],
+			data: installs,
 			fill: false,
 			backgroundColor: color1,
 		}, {
 			label: "Shortcode",
-			data: [4,0,3,1,2],
+			data: shortcodes,
 			fill: false,
 			backgroundColor: color2,
 		}, {
 			label: "Widget",
-			data: [4,3,2,1,0],
+			data: widgets,
 			lineTension: 0,
 			fill: false,
 			backgroundColor: color3,
 		}, {
 			label: "Service",
-			data: [0,4,1,3,2],
+			data: services,
 			fill: false,
 			backgroundColor: color4,
 		}]
@@ -48,7 +72,14 @@ var config = {
 		hover: { mode: 'label' },
 		scales: {
 			xAxes: [{
-				display: true
+				display: true,
+				type: 'time',
+                time: {
+					unit: 'month',
+					displayFormats: {
+                        quarter: 'MMM D, hA'
+                    }
+                }
 			}],
 			yAxes: [{
 				display: true
@@ -67,19 +98,19 @@ var barChartData = {
 	datasets: [{
 		label: 'Install',
 		backgroundColor: color1,
-		data: [1]
+		data: [ parseInt( monthData.install_count ) ]
 	}, {
 		label: 'Widget',
 		backgroundColor: color2,
-		data: [19]
+		data: [ parseInt( monthData.widget_count ) ]
 	}, {
 		label: 'Shortcode',
 		backgroundColor: color3,
-		data: [46]
+		data: [ parseInt( monthData.scode_count ) ]
 	}, {
 		label: 'Service',
 		backgroundColor: color4,
-		data: [85]
+		data: [ parseInt( monthData.svc_count ) ]
 	}]
 
 };

@@ -51,12 +51,15 @@ function get_num_valid_users() {
 function get_request_stats_table($src = '') {
 	global $wpdb;
 	
-	$sql = "SELECT user_id, time, ip_address, source FROM " . $wpdb->prefix . 'qddns_iplog';
+	$sql = "SELECT time, source FROM " . $wpdb->prefix . 'qddns_iplog';
 	
 	if( !empty($src))
 		$sql .= " WHERE source = '" . $src . "'";
 	
-	return count( $wpdb->get_results( $sql ) );
+	return $wpdb->get_results( $sql );
+}
+function get_request_stats_table_count($src = '') {
+	return count( get_request_stats_table( $src ) );
 }
 
 function current_user_has_auth() {
