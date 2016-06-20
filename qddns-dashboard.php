@@ -25,7 +25,7 @@ if(is_admin()) {
 			<hr>
 			This month, ' . $num_users . ' users have made ' . $total_requests . ' IP Lookup requests:
 			<canvas id="qddns-dashboard-canvas"></canvas>
-			<script src="../wp-content/plugins/quickdyndns/scripts-qddns.js"></script>
+			<script src="../wp-content/plugins/quickdyndns/js/scripts-qddns.js"></script>
 			<table class="wp-list-table widefat fixed striped posts">
 				<thead>
 				<tr>
