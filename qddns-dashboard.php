@@ -23,7 +23,8 @@ if(is_admin()) {
 		<div class="box-ip">
 			<hr>
 			This month, ' . $num_users . ' users have made ' . $total_requests . ' IP Lookup requests:
-			<canvas id="qddns-dashboard-canvas"></canvas>
+			<canvas id="qddns-dashboard-canvas-bar"></canvas>
+			<canvas id="qddns-dashboard-canvas-line"></canvas>
 			<table class="wp-list-table widefat fixed striped posts">
 				<thead>
 				<tr>

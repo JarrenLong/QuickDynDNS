@@ -18,7 +18,6 @@
     <div style="width: 75%">
         <canvas id="canvas"></canvas>
     </div>
-    <button id="randomizeData">Randomize Data</button>
     <script>
         var randomScalingFactor = function() {
             return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
@@ -45,8 +44,8 @@
 
         };
         window.onload = function() {
-            var ctx = document.getElementById("canvas").getContext("2d");
-            window.myBar = new Chart(ctx, {
+            var ctx2 = document.getElementById("canvas").getContext("2d");
+            window.myBar = new Chart(ctx2, {
                 type: 'bar',
                 data: barChartData,
                 options: {
@@ -69,15 +68,6 @@
                 }
             });
         };
-
-        $('#randomizeData').click(function() {
-            $.each(barChartData.datasets, function(i, dataset) {
-                dataset.backgroundColor = 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',.7)';
-                dataset.data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
-
-            });
-            window.myBar.update();
-        });
     </script>
 </body>
 
