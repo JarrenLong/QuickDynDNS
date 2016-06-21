@@ -51,10 +51,10 @@ function get_num_valid_users() {
 function get_request_stats_table($src = '') {
 	global $wpdb;
 	
-	$sql = "SELECT time, source FROM " . $wpdb->prefix . 'qddns_iplog';
+	$sql = "SELECT time, source FROM " . $wpdb->prefix . 'qddns_iplog WHERE MONTH(time) = MONTH(NOW()) AND YEAR(time) = YEAR(NOW())';
 	
 	if( !empty($src))
-		$sql .= " WHERE source = '" . $src . "'";
+		$sql .= " AND source = '" . $src . "'";
 	
 	return $wpdb->get_results( $sql );
 }
