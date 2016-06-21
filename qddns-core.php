@@ -14,7 +14,7 @@ function qddns_insert_data($uid, $ip, $src = '') {
 	);
 }
 
-function get_client_ip($src, $log = true) {
+function get_client_ip($src, $log = true, $auth = '') {
 	if ( !empty( $_SERVER['HTTP_CLIENT_IP'] ) )
 		$ip = $_SERVER['HTTP_CLIENT_IP'];
 	elseif ( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) )
@@ -29,6 +29,8 @@ function get_client_ip($src, $log = true) {
 		$uid = get_current_user_id();
 		if( $uid > 0 )
 			qddns_insert_data( $uid, $ip, $src );
+		else
+			qddns_insert_data( auth_to_uid( $auth ), $ip, $src );
 	}
 	
 	return $ip;
@@ -60,6 +62,17 @@ function get_request_stats_table($src = '') {
 }
 function get_request_stats_table_count($src = '') {
 	return count( get_request_stats_table( $src ) );
+}
+
+function auth_to_uid($auth) {
+	global $wpdb;
+	
+	$sql = "SELECT id FROM " . $wpdb->prefix . 'users WHERE auth = ' . $auth;
+	$rec = $wpdb->get_results( $sql );
+	if( count( $rec ) > 0)
+		return $rec[0]->uid;
+	
+	return 0;
 }
 
 function current_user_has_auth($auth = '') {
