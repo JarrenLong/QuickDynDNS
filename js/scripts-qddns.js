@@ -1,17 +1,7 @@
-var randomColorFactor = function() {
-	return Math.round(Math.random() * 255);
-};
-var randomColor = function(opacity) {
-	return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
-};
-var randomScalingFactor = function() {
-	return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
-};
-
-var color1 = randomColor(0.5);
-var color2 = randomColor(0.5);
-var color3 = randomColor(0.5);
-var color4 = randomColor(0.5);
+var color1 = '#2F4372';
+var color2 = '#76296C';
+var color3 = '#8DA339';
+var color4 = '#AA853B';
 
 var installs = new Array();
 var y_labels = new Array();
