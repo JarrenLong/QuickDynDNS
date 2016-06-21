@@ -15,9 +15,8 @@
 	$plugin = plugin_name();
 	add_filter("plugin_action_links_$plugin", 'qddns_plugin_action_links' );
 	
-	// TODO: Doesn't work anymore...?
 	function qddns_plugin_row_meta_links($links, $file) {
-		$plugin_file = plugin_basename( __FILE__ );
+		$plugin_file = plugin_name();
 		
 		if ( $file == $plugin_file ) {
 			return array_merge(
