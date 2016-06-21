@@ -62,13 +62,19 @@ function get_request_stats_table_count($src = '') {
 	return count( get_request_stats_table( $src ) );
 }
 
-function current_user_has_auth() {
+function current_user_has_auth($auth = '') {
 	global $wpdb;
 	
-	$uid = get_current_user_id();
-	if( $uid > 0 ) {
-		$sql = "SELECT id FROM " . $wpdb->prefix . 'users WHERE id = ' . $uid;
-	
+	if($auth == '') {
+		$uid = get_current_user_id();
+		if( $uid > 0 ) {
+			$sql = "SELECT id FROM " . $wpdb->prefix . 'users WHERE id = ' . $uid;
+		
+			return count( $wpdb->get_results( $sql ) ) > 0;
+		}
+	} else {
+		$sql = "SELECT id FROM " . $wpdb->prefix . 'users WHERE auth = ' . $auth;
+		
 		return count( $wpdb->get_results( $sql ) ) > 0;
 	}
 	
