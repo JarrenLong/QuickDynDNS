@@ -38,7 +38,7 @@ if(is_admin()) {
 			<hr>
 			This month, ' . $num_users . ' users have made ' . $total_requests_count . ' IP Lookup requests:
 			<canvas id="qddns-dashboard-canvas-bar"></canvas>
-			<canvas id="qddns-dashboard-canvas-line"></canvas>
+			<br/>
 			<table class="wp-list-table widefat fixed striped posts">
 				<thead>
 				<tr>
@@ -63,6 +63,8 @@ if(is_admin()) {
 					<td>' . $req_svc_count . '</td>
 				</tr>
 			</table>
+			<br/>
+			<canvas id="qddns-dashboard-canvas-line"></canvas>
 			<hr>
 			Like this plugin? <a href="http://jlong.co/donate">Donate</a> to support development!
 		</div>';

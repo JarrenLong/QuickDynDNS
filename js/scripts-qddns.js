@@ -14,23 +14,38 @@ var color3 = randomColor(0.5);
 var color4 = randomColor(0.5);
 
 var installs = new Array();
+var y_labels = new Array();
 var shortcodes = new Array();
 var widgets = new Array();
 var services = new Array();
 
 jQuery.each( monthData.requests , function(k, v) {
+	y_labels.push( new Array( moment( v.time, 'YYYY-MM-DD HH:mm:ss' ), 1 ) );
+	
 	switch(v.source) {
 		case "install":
-			installs.push( moment( v.time, 'YYYY-MM-DD HH:mm:ss' ) );
+			installs.push( 1 );
+			shortcodes.push( 0 );
+			widgets.push( 0 );
+			services.push( 0 );
 			break;
 		case "shortcode":
-			shortcodes.push( moment( v.time, 'YYYY-MM-DD HH:mm:ss' ) );
+			installs.push( 0 );
+			shortcodes.push( 1 );
+			widgets.push( 0 );
+			services.push( 0 );
 			break;
 		case "widget":
-			widgets.push( moment( v.time, 'YYYY-MM-DD HH:mm:ss' ) );
+			installs.push( 0 );
+			shortcodes.push( 0 );
+			widgets.push( 1 );
+			services.push( 0 );
 			break;
 		case "service":
-			services.push( moment( v.time, 'YYYY-MM-DD HH:mm:ss' ) );
+			installs.push( 0 );
+			shortcodes.push( 0 );
+			widgets.push( 0 );
+			services.push( 1 );
 			break;
 		default:
 		break;
@@ -40,7 +55,7 @@ jQuery.each( monthData.requests , function(k, v) {
 var config = {
 	type: 'line',
 	data: {
-		labels: ["This Month", "Today"],
+		labels: y_labels,
 		datasets: [{
 			label: "Install",
 			data: installs,
@@ -72,17 +87,10 @@ var config = {
 		hover: { mode: 'label' },
 		scales: {
 			xAxes: [{
-				display: true,
-				type: 'time',
-                time: {
-					unit: 'month',
-					displayFormats: {
-                        quarter: 'MMM D, hA'
-                    }
-                }
+				display: false
 			}],
 			yAxes: [{
-				display: true
+				display: false
 			}]
 		},
 		title: {
