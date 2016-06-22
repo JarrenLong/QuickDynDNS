@@ -67,7 +67,7 @@ function get_request_stats_table_count($src = '') {
 function auth_to_uid($auth) {
 	global $wpdb;
 	
-	$sql = "SELECT id FROM " . $wpdb->prefix . 'users WHERE auth = ' . $auth;
+	$sql = "SELECT id FROM " . $wpdb->prefix . "users WHERE service_token = '" . $auth . "'";
 	$rec = $wpdb->get_results( $sql );
 	if( count( $rec ) > 0)
 		return $rec[0]->uid;
@@ -86,7 +86,7 @@ function current_user_has_auth($auth = '') {
 			return count( $wpdb->get_results( $sql ) ) > 0;
 		}
 	} else {
-		$sql = "SELECT id FROM " . $wpdb->prefix . 'users WHERE auth = ' . $auth;
+		$sql = "SELECT id FROM " . $wpdb->prefix . "users WHERE service_token = '" . $auth . "'";
 		
 		return count( $wpdb->get_results( $sql ) ) > 0;
 	}
