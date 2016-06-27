@@ -23,8 +23,8 @@ if(is_admin()) {
 		
 		wp_enqueue_script( 'scripts-qddns-chartjs', plugins_url( 'js/Chart.bundle.min.js', __FILE__ ), array(), true);
 		wp_enqueue_script( 'scripts-qddns-moment', plugins_url( 'js/moment.min.js', __FILE__ ), array(), true);
-		wp_enqueue_script( 'scripts-qddns', plugins_url( 'js/scripts-qddns.js', __FILE__ ), array(), true);
-		wp_localize_script( 'scripts-qddns', 'monthData', $monthData );
+		wp_enqueue_script( 'scripts-qddns-dashboard', plugins_url( 'js/scripts-qddns-dashboard.js', __FILE__ ), array(), true);
+		wp_localize_script( 'scripts-qddns-dashboard', 'monthData', $monthData );
 
 		// display information
 		echo '<div style="display:table; width: 100%;">';

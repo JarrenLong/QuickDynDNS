@@ -3,15 +3,11 @@ var color2 = '#76296C';
 var color3 = '#8DA339';
 var color4 = '#AA853B';
 
-var installs = new Array();
 var y_labels = new Array();
+var installs = new Array();
 var shortcodes = new Array();
 var widgets = new Array();
 var services = new Array();
-
-function isInArray(value, array) {
-  return array.indexOf(value) > -1;
-}
 
 jQuery.each( monthData.daily_requests , function(k, v) {
 	y_labels.push( new Array( moment( v.day, 'YYYY-MM-DD' ), 1 ) );
@@ -19,26 +15,14 @@ jQuery.each( monthData.daily_requests , function(k, v) {
 	switch(v.source) {
 		case "install":
 			installs.push( v.requests );
-			//shortcodes.push( 0 );
-			//widgets.push( 0 );
-			//services.push( 0 );
 			break;
 		case "shortcode":
-			//installs.push( 0 );
 			shortcodes.push( v.requests );
-			//widgets.push( 0 );
-			//services.push( 0 );
 			break;
 		case "widget":
-			//installs.push( 0 );
-			//shortcodes.push( 0 );
 			widgets.push( v.requests );
-			//services.push( 0 );
 			break;
 		case "service":
-			//installs.push( 0 );
-			//shortcodes.push( 0 );
-			//widgets.push( 0 );
 			services.push( v.requests );
 			break;
 		default:
@@ -114,7 +98,6 @@ var barChartData = {
 		backgroundColor: color4,
 		data: [ parseInt( monthData.svc_count ) ]
 	}]
-
 };
 
 window.onload = function() {
