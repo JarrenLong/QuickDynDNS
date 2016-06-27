@@ -9,17 +9,29 @@ function qddns_show_extra_profile_fields( $user ) {
 		<tr>
 			<th><label for="qddns_enabled">Enable Web Service</label></th>
 			<td>
-				<input type="checkbox" name="qddns_enabled" id="qddns_enabled" value="<?php echo esc_attr( get_the_author_meta( 'qddns_enabled', $user->ID ) ); ?>" />
-				Enable/disable QDDNS client services for your account
+				AM: <?php get_the_author_meta( 'qddns_enabled', $user->ID ); ?>
+				<input type="checkbox" name="qddns_enabled" id="qddns_enabled" value="<?php echo esc_attr( get_the_author_meta( 'qddns_enabled', $user->ID ) ); ?>" <?php if(get_the_author_meta( 'qddns_enabled', $user->ID ) == 1) echo "checked"; ?>/>
+				Enable/disable QDDNS client services for account
 			</td>
 		</tr>
 		<tr>
 			<th><label for="qddns_client_auth">Client Auth Token</label></th>
 			<td>
-				<input type="text" name="qddns_client_auth" id="qddns_client_auth" value="<?php echo esc_attr( get_the_author_meta( 'qddns_client_auth', $user->ID ) ); ?>" class="regular-text" /><br />
+				<input type="text" name="qddns_client_auth" id="qddns_client_auth" value="<?php echo esc_attr( get_the_author_meta( 'qddns_client_auth', $user->ID ) ); ?>" class="regular-text" />
+				<input type='button' class="additional-user-image button-primary" value="Generate" id="qddns_button_generate"/><br />
 				<span class="description">Used for authenticating you when you use the QDDNS web service</span>
+                <!--<span class="description">Generate a new client auth token to use for authentication</span>-->
 			</td>
 		</tr>
+		<!--
+		<tr>
+			<th></th>
+			<td>
+				<input type='button' class="additional-user-image button-primary" value="Generate" id="uploadimage"/><br />
+                <span class="description">Generate a new client auth token to use for authentication</span>
+			</td>
+		</tr>
+		-->
 	</table>
 <?php
 }
