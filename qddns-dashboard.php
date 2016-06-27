@@ -7,11 +7,12 @@ if(is_admin()) {
 		$ip = get_client_ip('', false);
 		$host = ip_address_to_hostname( $ip );
 		$num_users = get_num_valid_users();
-		$total_requests_count = get_request_stats_table_count();
+		//$total_requests_count = get_request_stats_table_count();
 		$req_install_count = get_request_stats_table_count('install');
 		$req_scode_count = get_request_stats_table_count('shortcode');
 		$req_widget_count = get_request_stats_table_count('widget');
 		$req_svc_count = get_request_stats_table_count('service');
+		$total_requests_count = ($req_install_count + $req_scode_count + $req_widget_count + $req_svc_count);
 		
 		$monthData = array(
 			'install_count' => $req_install_count,
