@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 function qddns_insert_data($uid, $ip, $src = '') {
 	global $wpdb;

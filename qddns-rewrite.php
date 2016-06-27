@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 function qddns_rewrite_activate() {
 	qddns_rewrite_init();

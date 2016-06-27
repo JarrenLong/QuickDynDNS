@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 // Create the widget 
 class qddns_widget extends WP_Widget {

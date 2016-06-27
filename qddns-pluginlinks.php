@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 //if(is_admin()) {
 	/* Add links to the plugin page next to the Activate/Deactivate link */

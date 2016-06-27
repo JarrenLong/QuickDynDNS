@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 /* Plugin Settings Page */
 function qddns_show_settings(){

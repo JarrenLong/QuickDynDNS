@@ -1,14 +1,15 @@
 === Quick DynDNS ===
-Contributors: Jarren Long
+Contributors: JarrenLong
+Tags: dns, dynamic dns, ddns, lookup ip address, ip lookup, ip address, show ip address, quick
 Author URI: http://jlong.co
 Plugin URL: http://jlong.co/quickdyndns
 Donate link: http://jlong.co/donate
-Description: Quick DynDNS provides free and premium Dynamic DNS services for your members, allowing them to know their current IP address wherever they are.
-Tags: dns, dynamic dns, ddns, lookup ip address, ip lookup, ip address, show ip address
-License: GPLv3
 Requires at least: 3.6
 Tested up to: 4.5.3
 Stable tag: 1.0.50
+License: GPLv3
+
+Quick DynDNS provides free and premium Dynamic DNS services for your members, allowing them to know their current IP address wherever they are.
 
 == Description ==
 Quick DynDNS (QDDNS) makes it easy to setup your very own Dynamic DNS (DDNS) service, allowing users all of the benefits of knowing their IP address. This can be very handy for users hosting web services at home who do not have the benefit of owning a static IP address.
@@ -24,34 +25,27 @@ The Dashboard Widget is designed to give you concise statistics about how QDDNS 
 = Widgets =
 The widget that comes with Quick DynDNS can be placed anywhere on your site that will accept a widget, and shows the exact same information as the [qddns] shortcode. The widget is provided as a convenience; if you want to place the QDDNS information somewhere unusual on your website, the [qddns] shortcode will be easier to use.
 
+
 == Installation ==
 = From your WordPress dashboard =
-1. Visit 'Plugins > Add New'
-2. Search for 'Quick DynDNS'
+1. Visit \'Plugins > Add New\'
+2. Search for \'Quick DynDNS\'
 3. Activate Quick DynDNS from your Plugins page
 
 = From WordPress.org =
 1. Download Quick DynDNS
-2. Upload the 'quickdyndns' directory to your '/wp-content/plugins/' directory, using your favorite method (ftp, sftp, scp, etc...)
+2. Upload the \'quickdyndns\' directory to your \'/wp-content/plugins/\' directory, using your favorite method (ftp, sftp, scp, etc...)
 3. Activate Quick DynDNS from your Plugins page
-
-
-= Template Tags =
-[qddns] use this tag on your pages to show your client's IP address.
-
-== Screenshots ==
-1. Display short code
-2. Dashboard
-3. Short code in a widget
 
 == Frequently Asked Questions ==
 Nothing has been asked so far!
 
-== Issues ==
-Nothing to report!
+== Screenshots ==
+1. Display shortcode
+2. Dashboard
+3. Shortcode in a widget
 
 == Changelog ==
-
 = 1.1.0 =
 Released: July xth, 2016
 * Initial public release

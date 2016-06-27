@@ -1,14 +1,14 @@
 <?php
 /*
- * Plugin name: Quick DynDNS
- * Plugin URI: http://jlong.co
- * Description: Quick DynDNS provides free and premium Dynamic DNS services for your members, allowing them to know their current IP address wherever they are.
- * Version: 1.0.50
- * Author: Jarren Long
- * Author URI: http://jlong.co
- * License: GPLv3
- */
-/*
+Plugin Name: Quick DynDNS
+Plugin URI: http://jlong.co/quickdyndns
+Description: Quick DynDNS provides free and premium Dynamic DNS services for your members, allowing them to know their current IP address wherever they are.
+Version: 1.0.50
+Author: Jarren Long
+Author URI: http://jlong.co
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
+
 Copyright 2016 Jarren Long (jarrenlong@gmail.com)
 
 This program is free software: you can redistribute it and/or modify
@@ -24,6 +24,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 global $qddns_db_version;
 $qddns_db_version = '1.0.50';

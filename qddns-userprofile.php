@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 /* Add custom fields to the user's profile config page */
 function qddns_show_extra_profile_fields( $user ) {
