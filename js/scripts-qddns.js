@@ -145,15 +145,3 @@ window.onload = function() {
 		}
 	});
 };
-
-jQuery(document).ready(function($){
-	// Uploading files
-	var file_frame;
- 
-  $('#qddns_button_generate').on('click', function( event ){
-    event.preventDefault();
- 
-    console.log("Clicked!");
-  });
- 
-});
