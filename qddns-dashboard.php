@@ -7,8 +7,7 @@ if(is_admin()) {
 		$ip = get_client_ip('', false);
 		$host = ip_address_to_hostname( $ip );
 		$num_users = get_num_valid_users();
-		$total_requests = get_request_stats_table();
-		$total_requests_count = count( $total_requests );
+		$total_requests_count = get_request_stats_table_count();
 		$req_install_count = get_request_stats_table_count('install');
 		$req_scode_count = get_request_stats_table_count('shortcode');
 		$req_widget_count = get_request_stats_table_count('widget');
@@ -19,7 +18,7 @@ if(is_admin()) {
 			'scode_count' => $req_scode_count,
 			'widget_count' => $req_widget_count,
 			'svc_count' => $req_svc_count,
-			'requests' => $total_requests
+			'daily_requests' => get_request_stats_table_by_day()
 		);
 		
 		wp_enqueue_script( 'scripts-qddns-chartjs', plugins_url( 'js/Chart.bundle.min.js', __FILE__ ), array(), true);

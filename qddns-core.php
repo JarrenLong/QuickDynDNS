@@ -51,6 +51,18 @@ function get_num_valid_users() {
 	return count( $wpdb->get_results( "SELECT DISTINCT user_id FROM " . $wpdb->prefix . 'qddns' ) );
 }
 
+function get_request_stats_table_by_day($src = '') {
+	global $wpdb;
+	
+	$sql = "SELECT DATE(time) day, source, COUNT(source) requests FROM " . $wpdb->prefix . 'qddns_iplog WHERE MONTH(time) = MONTH(NOW()) AND YEAR(time) = YEAR(NOW())';
+	
+	if( !empty($src))
+		$sql .= " AND source = '" . $src . "'";
+	
+	$sql .= " GROUP BY day, source ORDER BY day";
+	
+	return $wpdb->get_results( $sql );
+}
 function get_request_stats_table($src = '') {
 	global $wpdb;
 	

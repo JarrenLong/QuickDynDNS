@@ -9,33 +9,37 @@ var shortcodes = new Array();
 var widgets = new Array();
 var services = new Array();
 
-jQuery.each( monthData.requests , function(k, v) {
-	y_labels.push( new Array( moment( v.time, 'YYYY-MM-DD HH:mm:ss' ), 1 ) );
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+}
+
+jQuery.each( monthData.daily_requests , function(k, v) {
+	y_labels.push( new Array( moment( v.day, 'YYYY-MM-DD' ), 1 ) );
 	
 	switch(v.source) {
 		case "install":
-			installs.push( 1 );
-			shortcodes.push( 0 );
-			widgets.push( 0 );
-			services.push( 0 );
+			installs.push( v.requests );
+			//shortcodes.push( 0 );
+			//widgets.push( 0 );
+			//services.push( 0 );
 			break;
 		case "shortcode":
-			installs.push( 0 );
-			shortcodes.push( 1 );
-			widgets.push( 0 );
-			services.push( 0 );
+			//installs.push( 0 );
+			shortcodes.push( v.requests );
+			//widgets.push( 0 );
+			//services.push( 0 );
 			break;
 		case "widget":
-			installs.push( 0 );
-			shortcodes.push( 0 );
-			widgets.push( 1 );
-			services.push( 0 );
+			//installs.push( 0 );
+			//shortcodes.push( 0 );
+			widgets.push( v.requests );
+			//services.push( 0 );
 			break;
 		case "service":
-			installs.push( 0 );
-			shortcodes.push( 0 );
-			widgets.push( 0 );
-			services.push( 1 );
+			//installs.push( 0 );
+			//shortcodes.push( 0 );
+			//widgets.push( 0 );
+			services.push( v.requests );
 			break;
 		default:
 		break;
