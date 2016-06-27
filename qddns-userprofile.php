@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-wp_enqueue_script( 'scripts-qddns', plugins_url( 'js/scripts-qddns-userprofile.js', __FILE__ ), array(), true);
+wp_enqueue_script( 'scripts-qddns-userprofile', plugins_url( 'js/scripts-qddns-userprofile.js', __FILE__ ), array(), true);
 
 /* Add custom fields to the user's profile config page */
 function qddns_show_extra_profile_fields( $user ) {
@@ -11,7 +11,7 @@ function qddns_show_extra_profile_fields( $user ) {
 		<tr>
 			<th><label for="qddns_client_auth_enabled">Enable Web Service</label></th>
 			<td>
-				<input type="checkbox" name="qddns_client_auth_enabled" id="qddns_client_auth_enabled" value="qddns_client_auth_enabled"/> <?php echo esc_attr( get_the_author_meta( 'qddns_client_auth_enabled', $user->ID ) ); ?>
+				<input type="checkbox" name="qddns_client_auth_enabled" id="qddns_client_auth_enabled" value="qddns_client_auth_enabled" <?php if( get_the_author_meta( 'qddns_client_auth_enabled', $user->ID ) == 'qddns_client_auth_enabled' ) { ?>checked="checked"<?php } ?> />
 				Enable/disable QDDNS client services for account
 			</td>
 		</tr>
@@ -34,7 +34,6 @@ function qddns_save_extra_profile_fields( $user_id ) {
 	if ( !current_user_can( 'edit_user', $user_id ) )
 		return false;
 
-	/* Copy and paste this line for additional fields */
 	update_usermeta( $user_id, 'qddns_client_auth_enabled', $_POST['qddns_client_auth_enabled'] );
 	update_usermeta( $user_id, 'qddns_client_auth_token', $_POST['qddns_client_auth_token'] );
 }
