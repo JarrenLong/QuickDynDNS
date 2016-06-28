@@ -10,7 +10,7 @@ var widgets = new Array();
 var services = new Array();
 
 jQuery.each( monthData.daily_requests , function(k, v) {
-	y_labels.push( new Array( moment( v.day, 'YYYY-MM-DD' ), 1 ) );
+	y_labels.push( new Array( moment( v.day, 'YYYY-MM-DD' ) ) );
 	
 	switch(v.source) {
 		case "install":
@@ -30,54 +30,30 @@ jQuery.each( monthData.daily_requests , function(k, v) {
 	}
 });
 
-var config = {
-	type: 'line',
-	data: {
-		labels: y_labels,
-		datasets: [{
-			label: "Install",
-			data: installs,
-			fill: false,
-			backgroundColor: color1,
-		}, {
-			label: "Shortcode",
-			data: shortcodes,
-			fill: false,
-			backgroundColor: color2,
-		}, {
-			label: "Widget",
-			data: widgets,
-			lineTension: 0,
-			fill: false,
-			backgroundColor: color3,
-		}, {
-			label: "Service",
-			data: services,
-			fill: false,
-			backgroundColor: color4,
-		}]
-	},
-	options: {
-		responsive: true,
-		legend: {
-			position: 'top',
-		},
-		hover: { mode: 'label' },
-		scales: {
-			xAxes: [{
-				display: false
-			}],
-			yAxes: [{
-				display: false
-			}]
-		},
-		title: {
-			display: true,
-			text: 'Requests This Month'
-		}
-	}
+var lineChartData = {
+	labels: y_labels,
+	datasets: [{
+		label: "Install",
+		data: installs,
+		fill: false,
+		backgroundColor: color1,
+	}, {
+		label: "Shortcode",
+		data: shortcodes,
+		fill: false,
+		backgroundColor: color2,
+	}, {
+		label: "Widget",
+		data: widgets,
+		fill: false,
+		backgroundColor: color3,
+	}, {
+		label: "Service",
+		data: services,
+		fill: false,
+		backgroundColor: color4,
+	}]
 };
-
 
 var barChartData = {
 	labels: ["This Month"],
@@ -102,21 +78,39 @@ var barChartData = {
 
 window.onload = function() {
 	var ctx = document.getElementById("qddns-dashboard-canvas-line").getContext("2d");
-	window.myLine = new Chart(ctx, config);
+	window.myLine = new Chart(ctx, {
+		type: 'line',
+		data: lineChartData,
+		options: {
+			responsive: true,
+			legend: {
+				position: 'top',
+			},
+			hover: { mode: 'label' },
+			scales: {
+				xAxes: [{
+					display: false
+				}],
+				yAxes: [{
+					display: true
+				}]
+			},
+			title: {
+				display: true,
+				text: 'Requests This Month'
+			}
+		}
+	});
 	
 	var ctx2 = document.getElementById("qddns-dashboard-canvas-bar").getContext("2d");
 	window.myBar = new Chart(ctx2, {
 		type: 'bar',
 		data: barChartData,
 		options: {
-			title:{
-				display:true,
-				text:"Requests This Month By Source"
-			},
+			responsive: true,
 			tooltips: {
 				mode: 'label'
 			},
-			responsive: true,
 			scales: {
 				xAxes: [{
 					stacked: true
@@ -124,6 +118,10 @@ window.onload = function() {
 				yAxes: [{
 					stacked: true
 				}]
+			},
+			title: {
+				display: true,
+				text: 'Requests This Month By Source'
 			}
 		}
 	});
