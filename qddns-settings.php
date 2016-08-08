@@ -1,28 +1,28 @@
 <?php
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-// create custom plugin settings menu
-function qddns_settings_create_menu() {
-	add_menu_page('Quick DynDNS Settings', 'Quick DynDNS Settings', 'administrator', __FILE__, 'qddns_show_settings' , plugins_url('/images/icon.png', __FILE__) );
+// create custom plugin settings submenu and register settings
+function qddns_plugin_settings() {
+    //add_menu_page( 'Quick DynDNS Settings', 'Quick DynDNS', 'administrator', 'qddns', 'qddns_show_settings' );
+	add_submenu_page( 'options-general.php', 'Quick DynDNS Settings', 'Quick DynDNS', 'administrator', __FILE__, 'qddns_show_settings' );
 	add_action( 'admin_init', 'qddns_register_settings' );
 }
-add_action('admin_menu', 'qddns_settings_create_menu');
+add_action('admin_menu', 'qddns_plugin_settings');
 
 function qddns_register_settings() {
 	//register our settings
-	register_setting( 'qddns-settings-group', 'new_option_name' );
-	register_setting( 'qddns-settings-group', 'some_other_option' );
-	register_setting( 'qddns-settings-group', 'option_etc' );
+	register_setting( 'qddns-settings-group', 'ddns_enabled' );
+	register_setting( 'qddns-settings-group', 'ddns_enable_user_auth' );
 }
 
 function qddns_show_settings(){
 ?>
 <div class="wrap">
 	<h2>Quick DynDNS Settings</h2>
-	<p>A simple plugin to show client IP address information anywhere on your site, and provide Dynamic DNS services for your users. Have any suggestions, feature requests, or find any bugs? <a href="http://jlong.co/contact">Contact me</a> and I\'ll do my best to respond ASAP. Don\'t forget, <a href="http://jlong.co/donate">making a donation</a> is a great way to get faster service ;)</p>
+	<p>A simple plugin to show client IP address information anywhere on your site, and provide Dynamic DNS services for your users. Have any suggestions, feature requests, or find any bugs? <a href="http://jlong.co/contact">Contact me</a> and I'll do my best to respond ASAP. Don't forget, <a href="http://jlong.co/donate">making a donation</a> is a great way to get faster service ;)</p>
 	<hr />
 	<h3>Quickstart Instructions:</h3>
-	<h4>To show user\'s their current IP address:</h4>
+	<h4>To show user's their current IP address:</h4>
 	<i>Add the [qddns] shortcode in your posts and pages</i>
 	<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;OR
@@ -43,18 +43,13 @@ function qddns_show_settings(){
 		<?php do_settings_sections( 'qddns-settings-group' ); ?>
 		<table class="form-table">
 			<tr valign="top">
-			<th scope="row">New Option Name</th>
-			<td><input type="text" name="new_option_name" value="<?php echo esc_attr( get_option('new_option_name') ); ?>" /></td>
+			<th scope="row">DDNS Services Enabled</th>
+			<td><input type="checkbox" name="ddns_enabled" value="1" <?php checked( get_option('ddns_enabled') ); ?>" /></td>
 			</tr>
-			 
+
 			<tr valign="top">
-			<th scope="row">Some Other Option</th>
-			<td><input type="text" name="some_other_option" value="<?php echo esc_attr( get_option('some_other_option') ); ?>" /></td>
-			</tr>
-			
-			<tr valign="top">
-			<th scope="row">Options, Etc.</th>
-			<td><input type="text" name="option_etc" value="<?php echo esc_attr( get_option('option_etc') ); ?>" /></td>
+			<th scope="row">Require users to authenticate</th>
+			<td><input type="checkbox" name="ddns_enable_user_auth" value="1" <?php checked( get_option('ddns_enable_user_auth') ); ?>" /></td>
 			</tr>
 		</table>
 		
@@ -63,10 +58,5 @@ function qddns_show_settings(){
 </div>
 <?php
 }
-
-function qddns_plugin_settings() {
-    add_menu_page('Quick DynDNS Settings', 'Quick DynDNS', 'administrator', 'qddns', 'qddns_show_settings');
-}
-add_action('admin_menu', 'qddns_plugin_settings');
 
 ?>
