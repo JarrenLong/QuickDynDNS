@@ -91,14 +91,19 @@ function auth_to_uid($auth) {
 function current_user_has_auth($auth = '') {
 	global $wpdb;
 	
+	if ( !get_option( 'ddns_enable_user_auth' ) ) {
+		return true;
+	}
+	
 	if($auth == '') {
 		$uid = get_current_user_id();
 		if( $uid > 0 ) {
 			$sql = "SELECT id FROM " . $wpdb->prefix . 'users WHERE id = ' . $uid;
-		
+			
 			return count( $wpdb->get_results( $sql ) ) > 0;
 		}
 	} else {
+		// TODO: This is broken!
 		$sql = "SELECT id FROM " . $wpdb->prefix . "users WHERE service_token = '" . $auth . "'";
 		
 		return count( $wpdb->get_results( $sql ) ) > 0;

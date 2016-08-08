@@ -31,38 +31,43 @@ function qddns_rewrite_display_custom_page() {
 		$auth = get_query_var('qda');
 		$fmt = get_query_var('qdf');
 		
-		// TODO: Get user auth token built
-		//if( current_user_has_auth($auth) ) {
+		// Get user auth token built
+		$isAuth = current_user_has_auth($auth);
+		
+		$cur_ip = '';
+		$status = '401';
+		if( $isAuth ) {
 			$cur_ip = get_client_ip( 'service' );
+			$status = '200';
+		}
+		
+		if( $fmt == 'json' ) {
+			// Send response as JSON
+			header( 'Content-Type: application/json;charset=utf-8' );
 			
-			if( $fmt == 'json' ) {
-				// Send response as JSON
-				header( 'Content-Type: application/json;charset=utf-8' );
-				
-				wp_send_json( array(
-					'QDDNS' => array(
-						'IP' => $cur_ip,
-						'AuthToken' => $auth
-					)
-				) );
-			} else if( $fmt == 'xml') {
-				// Send response as XML
-				header('Content-Type: application/xml;charset=utf-8');
-				
-				print '<?xml version="1.0"?>
+			wp_send_json( array(
+				'QDDNS' => array(
+					'IP' => $cur_ip,
+					'AuthToken' => $auth,
+					'Status' => $status
+				)
+			) );
+		} else if( $fmt == 'xml') {
+			// Send response as XML
+			header('Content-Type: application/xml;charset=utf-8');
+			
+			print '<?xml version="1.0"?>
 <QDDNS xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<IP>' . $cur_ip . '</IP>
-	<AuthToken>' . $auth . '</AuthToken>
+<IP>' . $cur_ip . '</IP>
+<AuthToken>' . $auth . '</AuthToken>
+<Status>' . $status . '</Status>
 </QDDNS>';
-			} else {
-				// Send response as Text
-				header( 'Content-Type: text/plain;charset=utf-8' );
+		} else {
+			// Send response as Text
+			header( 'Content-Type: text/plain;charset=utf-8' );
 
-				print $cur_ip;
-			}
-		//} else {
-			//print '401';
-		//}
+			print $cur_ip;
+		}
 	
 		exit();
 	}
