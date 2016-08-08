@@ -27,8 +27,11 @@ function qddns_show_extra_profile_fields( $user ) {
 	</table>
 <?php
 }
-add_action( 'show_user_profile', 'qddns_show_extra_profile_fields' );
-add_action( 'edit_user_profile', 'qddns_show_extra_profile_fields' );
+
+if( get_option( 'ddns_enable_user_auth' ) ) {
+	add_action( 'show_user_profile', 'qddns_show_extra_profile_fields' );
+	add_action( 'edit_user_profile', 'qddns_show_extra_profile_fields' );
+}
 
 function qddns_save_extra_profile_fields( $user_id ) {
 	if ( !current_user_can( 'edit_user', $user_id ) )
@@ -37,6 +40,9 @@ function qddns_save_extra_profile_fields( $user_id ) {
 	update_usermeta( $user_id, 'qddns_client_auth_enabled', $_POST['qddns_client_auth_enabled'] );
 	update_usermeta( $user_id, 'qddns_client_auth_token', $_POST['qddns_client_auth_token'] );
 }
-add_action( 'personal_options_update', 'qddns_save_extra_profile_fields' );
-add_action( 'edit_user_profile_update', 'qddns_save_extra_profile_fields' );
+
+if( get_option( 'ddns_enable_user_auth' ) ) {
+	add_action( 'personal_options_update', 'qddns_save_extra_profile_fields' );
+	add_action( 'edit_user_profile_update', 'qddns_save_extra_profile_fields' );
+}
 ?>
