@@ -28,7 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 global $qddns_db_version;
-$qddns_db_version = '1.0.54';
+$qddns_db_version = '1.0.56';
 
 /* Plugin JS and CSS */
 wp_enqueue_style('styles-qddns', plugins_url( 'css/style-qddns.css', __FILE__ ), array(), 'all');
@@ -37,13 +37,19 @@ function plugin_name() {
 	return plugin_basename( __FILE__ ); 
 }
 
-include('qddns-rewrite.php');
+$enabled = get_option('ddns_enabled');
+
+if ($enabled) {
+  include('qddns-rewrite.php');
+}
 include('qddns-core.php');
 include('qddns-install.php');
 include('qddns-settings.php');
-include('qddns-dashboard.php');
-include('qddns-pluginlinks.php');
-include('qddns-shortcode.php');
-include('qddns-widget.php');
-include('qddns-userprofile.php');
+if ($enabled) {
+  include('qddns-dashboard.php');
+  include('qddns-pluginlinks.php');
+  include('qddns-shortcode.php');
+  include('qddns-widget.php');
+  include('qddns-userprofile.php');
+}
 ?>

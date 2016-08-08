@@ -46,11 +46,12 @@ function qddns_show_settings(){
 			<th scope="row">DDNS Services Enabled</th>
 			<td><input type="checkbox" name="ddns_enabled" value="1" <?php checked( get_option('ddns_enabled') ); ?>" /></td>
 			</tr>
-
+<?php if( get_option( 'ddns_enabled' ) ) { ?>
 			<tr valign="top">
 			<th scope="row">Require users to authenticate</th>
 			<td><input type="checkbox" name="ddns_enable_user_auth" value="1" <?php checked( get_option('ddns_enable_user_auth') ); ?>" /></td>
 			</tr>
+<?php } ?>
 		</table>
 		
 		<?php submit_button(); ?>
