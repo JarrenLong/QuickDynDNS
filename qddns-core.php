@@ -80,10 +80,10 @@ function get_request_stats_table_count($src = '') {
 function auth_to_uid($auth) {
 	global $wpdb;
 	
-	$sql = "SELECT id FROM " . $wpdb->prefix . "users WHERE service_token = '" . $auth . "'";
+	$sql = "select user_id from " . $wpdb->prefix . "usermeta WHERE meta_key = 'qddns_client_auth_token' AND meta_value = '" . $auth . "'";
 	$rec = $wpdb->get_results( $sql );
 	if( count( $rec ) > 0)
-		return $rec[0]->uid;
+		return $rec[0]->user_id;
 	
 	return 0;
 }
@@ -91,9 +91,8 @@ function auth_to_uid($auth) {
 function current_user_has_auth($auth = '') {
 	global $wpdb;
 	
-	if ( !get_option( 'ddns_enable_user_auth' ) ) {
-		return true;
-	}
+	if( !get_option( 'ddns_enable_user_auth' ) )
+		return false;
 	
 	if($auth == '') {
 		$uid = get_current_user_id();
@@ -103,8 +102,7 @@ function current_user_has_auth($auth = '') {
 			return count( $wpdb->get_results( $sql ) ) > 0;
 		}
 	} else {
-		// TODO: This is broken!
-		$sql = "SELECT id FROM " . $wpdb->prefix . "users WHERE service_token = '" . $auth . "'";
+		$sql = "select user_id from " . $wpdb->prefix . "usermeta WHERE meta_key = 'qddns_client_auth_token' AND meta_value = '" . $auth . "'";
 		
 		return count( $wpdb->get_results( $sql ) ) > 0;
 	}

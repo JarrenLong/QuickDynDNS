@@ -32,10 +32,11 @@ function qddns_rewrite_display_custom_page() {
 		$fmt = get_query_var('qdf');
 		
 		// Get user auth token built
-		$isAuth = current_user_has_auth($auth);
+		$isAuth = current_user_has_auth( $auth );
 		
-		$cur_ip = '';
+		$cur_ip = 'false';
 		$status = '401';
+		
 		if( $isAuth ) {
 			$cur_ip = get_client_ip( 'service' );
 			$status = '200';
