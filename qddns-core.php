@@ -113,4 +113,146 @@ function current_user_has_auth($auth = '') {
 function create_user_auth_token() {
 	return substr( bin2hex( wp_hash( get_current_user()->user_login . current_time( 'mysql' ) . $wpdb->prefix ) ), 0, 32 );
 }
+
+// TODO: These are borrowed from a few other plugins, need to be modified
+function qddns_decide_subdomain() {
+	$url = getenv( 'HTTP_HOST' ) . getenv( 'REQUEST_URI' );
+	$subdomains = explode( ".", $url );
+	$subdomain	= $subdomains[0];
+
+	// return false if not a category https://codex.wordpress.org/Function_Reference/get_category_by_slug
+	$category =  get_category_by_slug( $subdomain );
+
+	if ( $category && is_array( $this->selected_categories ) ) {
+		$category_term_id = $category->term_id;
+
+		//if child category is supposed to be subdomain, change to main category id
+		if(	$this->settings[ 'child_categories' ] == 'all_subdomain' ) {
+			if( $parent_cat = $this->get_the_ancestor( $category ) ) {
+				$category_term_id  = $parent_cat->term_id;
+			}
+		}
+
+		foreach ( $this->selected_categories as $id => $special_setting) {
+			if ( $id == $category_term_id ) {
+				$this->subdomain = $category;
+
+				if( is_array($special_setting) )
+					$this->settings = array_merge($this->settings,$special_setting);
+				$this->subdomain_home = $this->replace_to_subdomain_link( $category->slug , $this->home_url );
+
+				break;
+			}
+		}
+	}
+}
+
+function qddns_redirect() {
+	if ( 0 == $this->settings[ 'redirect' ] || ! $this->run  ) {
+		return;
+	}
+
+	$requested_url = 'http' . (empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "") . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ;
+	$requested_url = strtolower($requested_url);
+	$requested_url = rtrim($requested_url,'/');
+	/*
+	$_SERVER['REQUEST_URI'] can contain "?dfd=dfd"
+	so better to parse it to get real path
+	*/
+
+	$parse_requested_url = parse_url( $requested_url );
+
+	/*
+	* check main domain
+	*/
+	$is_main_domain = false;
+	$parse_home_url = parse_url( $this->home_url );
+	if( $parse_home_url['host'] == $parse_requested_url['host'] )
+		$is_main_domain = true;
+
+	/*
+	* redirect only work for main domain or subdomain created by this plugin
+	* so if user has subdomain outside this plugin will not be affected
+	*/
+	if ( $this->subdomain ||   $is_main_domain ) {
+		/*
+		* Begin to verify redirection
+		*/
+		$redirect = false;
+		$real_url = null;
+		$status = 302; //testing plugin
+		if( $this->run == 2 )
+			$status = 301;
+
+		if( is_single() ) {
+			if( is_feed() ||  is_trackback() || is_attachment() ) {
+				return;
+			}
+
+			global $post;
+
+			$result = $this->decide_subdomain_post($post->ID);
+
+			if( $result->subdomain) {
+				$real_url = get_permalink($post->ID);
+				$real_url = rtrim($real_url,'/');
+
+				/*
+				* wordpress didn't give comment page detection
+				* but we can use something like this
+				*/
+				$cpage = get_query_var( 'cpage' );
+				if ( $cpage > 0 ){
+					$real_url = $real_url . '/comment-page-' . $cpage;
+				}
+
+				/*
+				* it's for splited post using <!--nextpage-->
+				* is_paged() not working here
+				* cause default wp theme using something like this /post/4
+				* rather than /post/page/4
+				* we go to default
+				*/
+				$page_post = get_query_var( 'page', 1 );
+				if ( $page_post > 1 ) {
+					$real_url = $real_url . '/' . $page_post;
+				}
+			}
+		} elseif ( is_category() ) {
+			if ( is_feed() )
+				return;
+
+			global $cat;
+			$current_cat = get_category( $cat );
+			$parent_cat = $this->get_the_ancestor( $current_cat );
+			$scc = $this->settings[ 'child_categories' ];
+
+			if( $scc == 'main_categories_subdomains' || $scc == 'all_subdomain') {
+				if ( $parent_cat && @array_key_exists( $parent_cat->term_id , $this->selected_categories ) ) {
+					//yeah this category should be on subdomain
+					$real_url = get_category_link($current_cat->term_id);
+					$real_url = rtrim($real_url,'/');
+
+					if ( is_paged() ) {
+						$paged = get_query_var( 'paged', 1 );
+						$real_url = $real_url . '/page/' .  $paged ;
+					}
+				}
+			}
+		}
+
+		if( $real_url ) {
+			$parse_real_url = parse_url( $real_url );
+			if( $parse_real_url['host'] != $parse_requested_url['host'] || $parse_real_url['path'] != $parse_requested_url['path'] ) {
+				$redirect = $real_url;
+			}
+		}
+
+		if ( $redirect ) {
+			//echo $redirect . ' ' . $status;
+			wp_redirect( $redirect, $status );
+			exit();
+		}
+	}
+}
 ?>
