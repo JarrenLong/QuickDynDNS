@@ -91,7 +91,7 @@ function auth_to_uid($auth) {
 function current_user_has_auth($auth = '') {
 	global $wpdb;
 	
-	if( !get_option( 'ddns_enable_user_auth' ) )
+	if( !get_option( 'qddns_enable_user_auth' ) )
 		return false;
 	
 	if($auth == '') {

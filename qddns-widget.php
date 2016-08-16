@@ -25,7 +25,7 @@ class qddns_widget extends WP_Widget {
 		// This is where you run the code and display the output
 		echo __( get_client_ip('widget'), 'qddns_widget_domain' );
 		
-		if( get_option( 'ddns_show_powered_by_widget', true ) ) {
+		if( get_option( 'qddns_show_powered_by_widget', true ) ) {
 			echo '<br/><small><a href="http://jlong.co/qddns">Powered by Quick DynDNS</a></small>';
 		}
 
