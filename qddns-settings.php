@@ -13,6 +13,7 @@ function qddns_register_settings() {
 	//register our settings
 	register_setting( 'qddns-settings-group', 'ddns_enabled' );
 	register_setting( 'qddns-settings-group', 'ddns_enable_user_auth' );
+	register_setting( 'qddns-settings-group', 'ddns_show_powered_by_widget' );
 }
 
 function qddns_show_settings(){
@@ -43,13 +44,17 @@ function qddns_show_settings(){
 		<?php do_settings_sections( 'qddns-settings-group' ); ?>
 		<table class="form-table">
 			<tr valign="top">
-			<th scope="row">DDNS Services Enabled</th>
-			<td><input type="checkbox" name="ddns_enabled" value="1" <?php checked( get_option('ddns_enabled') ); ?>" /></td>
+				<th scope="row">DDNS Services Enabled</th>
+				<td><input type="checkbox" name="ddns_enabled" value="1" <?php checked( get_option('ddns_enabled', true) ); ?>" /></td>
 			</tr>
 <?php if( get_option( 'ddns_enabled' ) ) { ?>
 			<tr valign="top">
-			<th scope="row">Require users to authenticate</th>
-			<td><input type="checkbox" name="ddns_enable_user_auth" value="1" <?php checked( get_option('ddns_enable_user_auth') ); ?>" /></td>
+				<th scope="row">Require users to authenticate</th>
+				<td><input type="checkbox" name="ddns_enable_user_auth" value="1" <?php checked( get_option('ddns_enable_user_auth', true) ); ?>" /></td>
+			</tr>
+			<tr valign="top">
+				<th scope="row">Show 'Powered By' text in widget</th>
+				<td><input type="checkbox" name="ddns_show_powered_by_widget" value="1" <?php checked( get_option('ddns_show_powered_by_widget', true) ); ?>" /></td>
 			</tr>
 <?php } ?>
 		</table>

@@ -6,7 +6,7 @@ Plugin URL: http://jlong.co/quickdyndns
 Donate link: http://jlong.co/donate
 Requires at least: 3.6
 Tested up to: 4.6
-Stable tag: 1.0.62
+Stable tag: 1.0.63
 License: GPLv3
 
 Quick DynDNS provides free and premium Dynamic DNS services for your members, allowing them to know their current IP address wherever they are.
@@ -47,7 +47,7 @@ Nothing has been asked so far!
 
 == Changelog ==
 = 1.1.0 =
-Released: July xth, 2016
+Released: August xth, 2016
 * Initial public release
 
 = 1.0.x =
