@@ -35,6 +35,10 @@ function qddns_install() {
 	dbDelta( $sql );
 
 	add_option( 'qddns_db_version', $qddns_db_version );
+	// Make sure our default settings are defined
+	add_option( 'qddns_enabled', '1' );
+	add_option( 'qddns_enable_user_auth', '1' );
+	add_option( 'qddns_show_powered_by_widget', '1' );
 	
 	// Check for a newer version and upgrade the database if necessary
 	$installed_ver = get_option( "qddns_db_version" );

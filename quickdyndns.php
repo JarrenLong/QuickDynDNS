@@ -3,7 +3,7 @@
 Plugin Name: Quick DynDNS
 Plugin URI: http://jlong.co/quickdyndns
 Description: Quick DynDNS provides free and premium Dynamic DNS services for your members, allowing them to know their current IP address wherever they are.
-Version: 1.0.64
+Version: 1.0.65
 Author: Jarren Long
 Author URI: http://jlong.co
 License: GPLv3
@@ -28,7 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 global $qddns_db_version;
-$qddns_db_version = '1.0.64';
+$qddns_db_version = '1.0.65';
 
 /* Plugin JS and CSS */
 wp_enqueue_style('styles-qddns', plugins_url( 'css/style-qddns.css', __FILE__ ), array(), 'all');
