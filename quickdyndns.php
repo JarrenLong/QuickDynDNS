@@ -31,6 +31,7 @@ global $qddns_db_version;
 $qddns_db_version = '1.0.65';
 
 /* Plugin JS and CSS */
+wp_enqueue_script( 'scripts-qddns-jquery', plugins_url( 'js/jquery-3.2.1.min.js', __FILE__ ), array(), true);
 wp_enqueue_style('styles-qddns', plugins_url( 'css/style-qddns.css', __FILE__ ), array(), 'all');
 
 function plugin_name() {
