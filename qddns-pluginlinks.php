@@ -6,8 +6,8 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 	function qddns_plugin_action_links( $links ) {
 		$new_links = array(
 			'settings' => '<a href="options-general.php?page=qddns">Settings</a>',
-			'faq' => '<a href="http://jlong.co/quickdyndns#faq" target="_blank">FAQ</a>',
-			'donate' => '<a href="http://jlong.co/donate" target="_blank">Donate</a>'
+			'faq' => '<a href="https://www.booksnbytes.net/quickdyndns#faq" target="_blank">FAQ</a>',
+			'donate' => '<a href="https://www.booksnbytes.net/donate" target="_blank">Donate</a>'
 		);
 		
 		return array_merge( $links, $new_links );
@@ -22,8 +22,8 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 		if ( $file == $plugin_file ) {
 			return array_merge(
 				$links, array(
-					'support' => '<a href="http://jlong.co/quickdyndns#support" target="_blank">Support</a>',
-					'donate' => '<a href="http://jlong.co/donate" target="_blank">Donate</a>'
+					'support' => '<a href="https://www.booksnbytes.net/quickdyndns#support" target="_blank">Support</a>',
+					'donate' => '<a href="https://www.booksnbytes.net/donate" target="_blank">Donate</a>'
 				)
 			);
 		}

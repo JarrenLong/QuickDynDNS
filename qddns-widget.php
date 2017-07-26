@@ -26,7 +26,7 @@ class qddns_widget extends WP_Widget {
 		echo __( get_client_ip('widget'), 'qddns_widget_domain' );
 		
 		if( get_option( 'qddns_show_powered_by_widget', true ) ) {
-			echo '<br/><small><a href="http://jlong.co/qddns">Powered by Quick DynDNS</a></small>';
+			echo '<br/><small><a href="https://www.booksnbytes.net/qddns">Powered by Quick DynDNS</a></small>';
 		}
 
 		echo $args['after_widget'];

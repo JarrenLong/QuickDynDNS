@@ -67,7 +67,7 @@ if(is_admin()) {
 			<br/>
 			<canvas id="qddns-dashboard-canvas-line"></canvas>
 			<hr>
-			Like this plugin? <a href="http://jlong.co/donate">Donate</a> to support development!
+			Like this plugin? <a href="https://www.booksnbytes.net/donate">Donate</a> to support development!
 		</div>';
 	}
 

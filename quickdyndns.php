@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Quick DynDNS
-Plugin URI: http://jlong.co/quickdyndns
+Plugin URI: https://www.booksnbytes.net/quickdyndns
 Description: Quick DynDNS provides free and premium Dynamic DNS services for your members, allowing them to know their current IP address wherever they are.
 Version: 1.0.65
 Author: Jarren Long
-Author URI: http://jlong.co
+Author URI: https://www.booksnbytes.net
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 

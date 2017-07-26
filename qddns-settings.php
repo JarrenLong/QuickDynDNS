@@ -20,7 +20,7 @@ function qddns_show_settings(){
 ?>
 <div class="wrap">
 	<h2>Quick DynDNS Settings</h2>
-	<p>A simple plugin to show client IP address information anywhere on your site, and provide Dynamic DNS services for your users. Have any suggestions, feature requests, or find any bugs? <a href="http://jlong.co/contact">Contact me</a> and I'll do my best to respond ASAP. Don't forget, <a href="http://jlong.co/donate">making a donation</a> is a great way to get faster service ;)</p>
+	<p>A simple plugin to show client IP address information anywhere on your site, and provide Dynamic DNS services for your users. Have any suggestions, feature requests, or find any bugs? <a href="https://www.booksnbytes.net/contact">Contact me</a> and I'll do my best to respond ASAP. Don't forget, <a href="https://www.booksnbytes.net/donate">making a donation</a> is a great way to get faster service ;)</p>
 	<hr />
 	<h3>Quickstart Instructions:</h3>
 	<h4>To show user's their current IP address:</h4>
